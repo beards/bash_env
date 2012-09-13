@@ -12,6 +12,7 @@ alias vi='vim'
 alias sc='screen'
 alias sv='screen vim'
 alias cdc='cd ~/_code/'
+alias cdgit='cd ~/github'
 
 case $TERM in
  xterm*|rxvt*)

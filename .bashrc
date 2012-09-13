@@ -7,6 +7,7 @@ fi
 
 # User specific aliases and functions
 
+alias ls='ls --color'
 alias ll='ls -al --color'
 alias vi='vim'
 alias sc='screen'

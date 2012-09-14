@@ -1,31 +1,81 @@
+"
+" vimrc
+"
 
-set encoding=utf-8
-set fileencodings=utf-8,cp950
-
+"
+" basic
+"
 set nocompatible
+set history=50
+set showcmd
+set nomodeline      "ignore mode implication
+set backspace=indent,eol,start      " allow backspacing over everything in insert mode
 
+autocmd! bufwritepost .vimrc source ~/.vimrc " auto reload vimrc when editing it
+
+"
+" encoding / format
+"
+if has("multi_byte")
+  set fileencodings=utf-8,big5,cp950,gbk,cp936,iso-2022-jp,sjis,euc-jp,japan,euc-kr,ucs-bom,utf-bom,latin1,iso8859-1
+  set fileencoding=utf-8
+else
+  set enc=taiwan
+  set fileencoding=taiwan
+endif
+set fileformats=unix,dos,mac    "read variant
+set fileformat=unix             "write unix
+
+"
+" indent
+"
+"set tabstop=8
 set shiftwidth=4
 set softtabstop=4
-set expandtab
-set ai
-"set smartindent
+set expandtab       "use space instead of tab
+set autoindent
+set smartindent
+au FileType Makefile set noexpandtab    "disable tab replacement on Makefile
 
-set nu
-set showmatch
-set ruler
-"set cursorline
-set laststatus=2
-set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
+"
+" search
+"
+set incsearch       "highlight while typing
+set hlsearch        "highlight search result
+set smartcase       "ignore case if search pattern is all lowercase,case-sensitive otherwise
 
+"
+" theme / color / syntax
+"
+set background=dark
 syntax on
-"set t_Co=256
 colorscheme torte
+"set t_Co=256
 
 "
-" sudo write command
+" markup
 "
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-command Wq :execute ':W' | :q
+set number          "line number
+set ruler
+set showmatch       "show bracket matching
+set nocursorline
+set laststatus=2    "always show status 
+set statusline=\ %{HasPaste()}%-20.(%f\ %m%r%h\ %w%)\ 
+set statusline+=\ %<%30(\ \ \ %{hostname()}:%{CurDir()}%)\ 
+set statusline+=%=\ [%c%V,\ %l/%L]\ [%{&ff}/%{&fileencoding}/%Y]
+
+function! CurDir()
+    let curdir = substitute(getcwd(), $HOME, "~", "")
+    return curdir
+endfunction
+
+function! HasPaste()
+    if &paste
+        return '[PASTE]'
+    else
+        return ''
+    endif
+endfunction
 
 "
 " set screen title
@@ -39,4 +89,20 @@ if &term == "screen" || &term == "screen-bce" || &term == "xterm"
   set title
 endif
 
+"
+" for mouse selection / paste
+"
+map <F5> :set nu! paste!<CR>
+set pastetoggle=<F5>
+
+"
+" sudo write command
+"
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! Wq :execute ':W' | :q
+
+"
+" php auto-complete
+"
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 

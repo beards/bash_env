@@ -78,6 +78,51 @@ function! HasPaste()
 endfunction
 
 "
+" sudo write command
+"
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! Wq :execute ':W' | :q
+
+"
+" key mappings
+"
+set <F1>=[11~
+set <F2>=[12~
+set <F3>=[13~
+set <F4>=[14~
+let mapleader=","
+
+" for splits
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
+map <F6> <c-w>w
+imap <F6> <c-o><c-w>w
+
+" for mouse selection / paste
+map <F2> :set nu! paste!<CR>
+set pastetoggle=<F2>
+
+" search next/previous
+set <s-F3>=[25~
+map <F3> n
+map <s-F3> N
+imap <F3> <c-o>n
+imap <s-F3> <c-o>N
+map <F9> :set hls!<BAR>set hls?<CR>
+imap <F9> <c-o>:set hls!<BAR>set hls?<CR>
+
+" allow multiple indentation/deindentation in visual mode
+vnoremap < <gv
+vnoremap > >gv
+
+"
+" php auto-complete
+"
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+"
 " set screen title
 "
 set titlestring=%t%(\ %M%)
@@ -88,21 +133,4 @@ endif
 if &term == "screen" || &term == "screen-bce" || &term == "xterm"
   set title
 endif
-
-"
-" for mouse selection / paste
-"
-map <F5> :set nu! paste!<CR>
-set pastetoggle=<F5>
-
-"
-" sudo write command
-"
-command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-command! Wq :execute ':W' | :q
-
-"
-" php auto-complete
-"
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 

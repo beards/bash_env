@@ -1,7 +1,7 @@
 vbell off
 autodetach on
 startup_message off
-altscreen on
+altscreen on  # Refresh the display when exiting programs
 shell -$SHELL
 
 allpartial off
@@ -9,6 +9,9 @@ defc1 off
 defencoding utf8
 bind b encoding big5 utf8
 bind u encoding utf8 utf8
+
+bind s  # disable xoff
+bind "^s"  # disable xoff
 
 caption always "%{=u .d} %-w%<%{=ub .B}%n %t%{=u .d}%+w "
 hardstatus alwaysignore 
@@ -21,6 +24,7 @@ bindkey "^[[1;5D" prev
 bindkey "^[[1;5C" next
 bindkey "^[[5D" prev
 bindkey "^[[5C" next
+
 
 term screen
 #termcapinfo xterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"

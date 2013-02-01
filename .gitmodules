@@ -1,3 +1,6 @@
 [submodule "scripts/autoenv"]
 	path = scripts/autoenv
 	url = git@github.com:beards/autoenv.git
+[submodule "vimrc"]
+	path = vimrc
+	url = git@github.com:beards/vimrc.git

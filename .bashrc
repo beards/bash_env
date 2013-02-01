@@ -15,6 +15,7 @@ alias sv='screen vim'
 alias cdc='cd ~/_code/'
 alias cdgit='cd ~/github'
 
+# prompt
 case $TERM in
  xterm*|rxvt*)
   PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}[${PWD/$HOME/~}]\007"'
@@ -26,3 +27,5 @@ case $TERM in
  ;;
 esac
 
+# autoenv
+. ~/scripts/autoenv/activate.sh

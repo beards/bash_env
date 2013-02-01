@@ -1,0 +1,3 @@
+[submodule "scripts/autoenv"]
+	path = scripts/autoenv
+	url = git@github.com:beards/autoenv.git

@@ -36,6 +36,7 @@ cd ~
 mv .vimrc .vimrc.ori &> /dev/null
 ln -s $BASH_ENV_DIR/vimrc/ .vim
 ln -s .vim/.vimrc
+ln -s .vim/.gvimrc
 
 # git setting
 $BASH_ENV_DIR/scripts/set_git.sh

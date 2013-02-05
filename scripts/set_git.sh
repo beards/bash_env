@@ -8,4 +8,6 @@ git config --global alias.co checkout
 git config --global alias.log1 'log --pretty=oneline'
 git config --global alias.sub submodule
 
-git config core.editor vim
+git config --global push.default simple
+
+git config --global core.editor vim

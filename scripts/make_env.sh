@@ -12,6 +12,12 @@ cd ~
 mv .bashrc .bashrc.ori &> /dev/null
 ln -s $BASH_ENV_DIR/.bashrc
 ln -s $BASH_ENV_DIR/scripts
+source .bashrc
+
+# screenrc
+cd ~
+mv .screenrc .screenrc.ori &> /dev/null
+ln -s $BASH_ENV_DIR/.screenrc
 
 # profile for mac
 cd ~
@@ -19,12 +25,14 @@ source $BASH_ENV_DIR/scripts/get_platform.sh
 if [ "$OS" == "mac" ]; then
     mv .profile .profile.ori &> /dev/null
     ln -s $BASH_ENV_DIR/.profile
+    source .profile
 fi
 
-# screenrc
-cd ~
-mv .screenrc .screenrc.ori &> /dev/null
-ln -s $BASH_ENV_DIR/.screenrc
+# install homebrew on mac
+if [ "$OS" == "mac" ]; then
+    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+    brew update
+fi
 
 # update vim modules
 cd $BASH_ENV_DIR/vimrc/

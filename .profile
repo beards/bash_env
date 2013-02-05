@@ -1,5 +1,7 @@
 source ~/.bashrc
 
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
 alias ls='ls -vG'
 alias ll='ls -vGal'
 alias cdsim='cd ~/Library/Application\ Support/iPhone\ Simulator/'

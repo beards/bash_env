@@ -42,6 +42,7 @@ fi
 # install packages on linux
 if [ "$OS" == "debian" ]; then
     echo -e "# install necessary packages\n#"
+    sudo apt-get install gcc python-dev
     sudo apt-get install screen
     sudo apt-get install exuberant-ctags
     sudo apt-get install ack-grep
@@ -50,6 +51,7 @@ if [ "$OS" == "debian" ]; then
     sudo apt-get install vim
 elif [ "$OS" == "redhat" ]; then
     echo -e "# install necessary packages\n#"
+    sudo yum install gcc python-devel
     sudo yum install screen
     sudo yum install ctags
     sudo yum install ack

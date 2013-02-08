@@ -48,7 +48,7 @@ if [ "$OS" == "debian" ]; then
     sudo apt-get install ack-grep
     sudo apt-get install python-pip
     sudo pip install flake8
-    sudo apt-get install vim
+    sudo $BASH_ENV_DIR/scripts/build_vim.sh
 elif [ "$OS" == "redhat" ]; then
     echo -e "# install necessary packages\n#"
     sudo yum install gcc python-devel

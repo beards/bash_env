@@ -48,7 +48,7 @@ if [ "$OS" == "debian" ]; then
     sudo apt-get install ack-grep
     sudo apt-get install python-pip
     sudo pip install flake8
-    sudo $BASH_ENV_DIR/scripts/build_vim.sh
+    sudo $BASH_ENV_DIR/vimrc/build_vim_ubuntu.sh
 elif [ "$OS" == "redhat" ]; then
     echo -e "# install necessary packages\n#"
     sudo yum install gcc python-devel
@@ -58,20 +58,6 @@ elif [ "$OS" == "redhat" ]; then
     sudo yum install python-pip
     sudo pip install flake8
 fi
-
-# update vim modules
-echo -e "# update vim modules\n#"
-cd $BASH_ENV_DIR/vimrc/
-git submodule init
-git submodule update
-
-# vimrc
-echo -e "# set vimrc\n#"
-cd ~
-mv .vimrc .vimrc.ori &> /dev/null
-ln -s $BASH_ENV_DIR/vimrc/ .vim
-ln -s .vim/.vimrc
-ln -s .vim/.gvimrc
 
 # git setting
 echo -e "# set git configs\n#"

@@ -18,8 +18,9 @@ source $BASH_ENV_DIR/scripts/get_platform.sh
 if [ "$OS" == "debian" ]; then
     sudo apt-get update -y
     sudo apt-get upgrade -y
-    sudo $BASH_ENV_DIR/vimrc/build_vim_ubuntu.sh
     sudo apt-get install -y screen ack-grep
+    $BASH_ENV_DIR/scripts/build_clang.sh
+    $BASH_ENV_DIR/vimrc/build_vim_ubuntu.sh
 elif [ "$OS" == "redhat" ]; then
     sudo yum install gcc python-devel
     sudo yum install screen

@@ -30,3 +30,7 @@ esac
 # autoenv
 . ~/scripts/autoenv/activate.sh
 
+source ~/scripts/get_platform.sh
+if [ "$OS" == "debian" ]; then
+    alias ack='ack-grep'
+fi

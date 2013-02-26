@@ -9,6 +9,8 @@ fi
 
 alias ls='ls --color'
 alias ll='ls -al --color'
+alias grep='grep --color=always'
+alias less='less -R'
 alias vi='vim'
 alias sc='screen'
 alias sv='screen vim'

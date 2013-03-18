@@ -31,7 +31,10 @@ elif [ "$OS" == "redhat" ]; then
 elif [ "$OS" == "mac" ]; then
     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
     brew update
-    brew install macvim
+    brew install python
+    brew install macvim --override-system-vim
+    mkdir ~/Applications/ &> /dev/null
+    brew linkapps
 fi
 
 echo -e "#"

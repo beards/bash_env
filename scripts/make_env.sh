@@ -32,6 +32,11 @@ elif [ "$OS" == "mac" ]; then
     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
     brew update
     brew install python
+    # mountain lion issue: http://superuser.com/a/463474
+    cd /System/Library/Frameworks/Python.framework/Versions
+    sudo mv Current Current-sys
+    sudo ln -s `/usr/local/bin/python-config --prefix`/../Current
+    # ok python lib patched so we now can get macvim linked with brew python
     brew install macvim --override-system-vim
     mkdir ~/Applications/ &> /dev/null
     brew linkapps

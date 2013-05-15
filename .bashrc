@@ -60,7 +60,11 @@ esac
 # autoenv
 . ~/scripts/autoenv/activate.sh
 
+# alias ack-grep un ubuntu
 source ~/scripts/get_platform.sh
 if [ "$OS" == "debian" ]; then
     alias ack='ack-grep'
 fi
+
+# enable local rc
+source ~/.bashrc.local &> /dev/null

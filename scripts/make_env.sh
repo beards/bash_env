@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 SCRIPT_NAME=${BASH_SOURCE[0]}
 BASH_ENV_DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && cd ../  && pwd )"
 DATE=$(date -d "today" +"%Y%m%d%H%M")
@@ -27,7 +29,7 @@ elif [ "$OS" == "redhat" ]; then
     sudo yum install ctags
     sudo yum install ack
     sudo yum install python-pip
-    sudo pip install flake8
+    sudo pip-python install flake8
 elif [ "$OS" == "mac" ]; then
     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
     brew update

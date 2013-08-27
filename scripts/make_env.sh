@@ -11,18 +11,35 @@ echo -e "# $SCRIPT_NAME: update scripts"
 echo -e "#"
 cd $BASH_ENV_DIR
 git submodule init
-git submodule update
+git submodule update --init --recursive
 
 echo -e "#"
 echo -e "# $SCRIPT_NAME: install necessary packages"
 echo -e "#"
+
+BUILD_CLANG=0
+BUILD_VIM=0
+
+for arg in "$@"
+do
+    if [ $arg == "--clang" ]; then
+        BUILD_CLANG=1
+    elif [ $arg == "--vim" ]; then
+        BUILD_VIM=1
+    fi
+done
+
 source $BASH_ENV_DIR/scripts/get_platform.sh
 if [ "$OS" == "debian" ]; then
     sudo apt-get update -y
-    sudo apt-get upgrade -y
+    sudo apt-get dist-upgrade -y
     sudo apt-get install -y screen ack-grep
-    $BASH_ENV_DIR/scripts/build_clang.sh
-    $BASH_ENV_DIR/vimrc/build_vim_ubuntu.sh
+    if [ $BUILD_CLANG -eq 1 ]; then
+        $BASH_ENV_DIR/scripts/build_clang.sh
+    fi
+    if [ $BUILD_VIM -eq 1 ]; then
+        $BASH_ENV_DIR/vimrc/build_vim_ubuntu.sh
+    fi
 elif [ "$OS" == "redhat" ]; then
     sudo yum install gcc python-devel
     sudo yum install screen

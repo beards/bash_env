@@ -12,6 +12,7 @@ echo -e "#"
 cd $BASH_ENV_DIR
 git submodule init
 git submodule update --init --recursive
+git submodule foreach --recursive "(git checkout master; git pull --rebase)"
 
 echo -e "#"
 echo -e "# $SCRIPT_NAME: install necessary packages"
@@ -65,6 +66,7 @@ echo -e "#"
 echo -e "# $SCRIPT_NAME: set bashrc, screenrc"
 echo -e "#"
 cd ~
+set +e
 mv .bashrc .bashrc.bak.$DATE &> /dev/null
 ln -s $BASH_ENV_DIR/.bashrc
 mv .screenrc .screenrc.bak.$DATE &> /dev/null

@@ -7,6 +7,7 @@ shell -$SHELL
 allpartial off
 defc1 off
 defencoding utf8
+encoding utf8 utf8
 bind b encoding big5 utf8
 bind u encoding utf8 utf8
 

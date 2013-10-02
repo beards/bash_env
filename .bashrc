@@ -7,17 +7,6 @@ elif [ -f /etc/bash.bashrc ]; then
     . /etc/bash.bashrc
 fi
 
-# User specific aliases and functions
-alias ls='ls --color'
-alias ll='ls -al --color'
-alias grep='grep --color=always'
-alias less='less -R'
-alias vi='vim'
-alias sc='screen'
-alias sv='screen vim'
-alias cdc='cd ~/_code/'
-alias cdgit='cd ~/github'
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -63,6 +52,22 @@ esac
 
 # autoenv
 . ~/scripts/autoenv/activate.sh
+
+# local & encoding
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# User specific aliases and functions
+alias ls='ls --color'
+alias ll='ls -al --color'
+alias grep='grep --color=always'
+alias less='less -R'
+alias vi='vim'
+alias sc='screen'
+alias sv='screen vim'
+alias cdc='cd ~/_code/'
+alias cdgit='cd ~/github'
 
 # alias ack-grep un ubuntu
 source ~/scripts/get_platform.sh

@@ -42,12 +42,12 @@ if [ "$OS" == "debian" ]; then
         $BASH_ENV_DIR/vimrc/build_vim_ubuntu.sh
     fi
 elif [ "$OS" == "redhat" ]; then
-    sudo yum install gcc python-devel
-    sudo yum install screen
-    sudo yum install ctags
-    sudo yum install ack
-    sudo yum install python-pip
-    sudo pip-python install flake8
+    sudo yum install -y gcc python-devel screen ctags ack python-setuptools
+    sudo easy_install pip
+    sudo pip install flake8
+    if [ $BUILD_VIM -eq 1 ]; then
+        $BASH_ENV_DIR/vimrc/build_vim_centos.sh
+    fi
 elif [ "$OS" == "mac" ]; then
     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
     brew update

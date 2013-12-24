@@ -71,6 +71,9 @@ alias sc='screen'
 alias sv='screen vim'
 alias cdc='cd ~/_code/'
 alias cdgit='cd ~/github'
+alias gs='git status'
+alias ga='git add'
+alias gd='git diff'
 
 # alias ack-grep un ubuntu
 source ~/scripts/get_platform.sh

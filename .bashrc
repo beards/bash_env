@@ -53,9 +53,6 @@ case $TERM in
  ;;
 esac
 
-# autoenv
-. ~/scripts/autoenv/activate.sh
-
 # local & encoding
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -69,6 +66,17 @@ source $HOME/scripts/get_platform.sh
 
 # autoenv
 . $HOME/scripts/autoenv/activate.sh
+
+# pyenv
+if [ -e $HOME/.pyenv ]; then
+    export PYENV_ROOT="$HOME/.pyenvdd"
+elif [ -e /usr/local/opt/pyenv ]; then
+    export PYENV_ROOT="/usr/local/opt/pyenv"
+fi
+if [ $PYENV_ROOT ]; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
 
 # mac bash completion
 if [ $OS == "mac" ]; then

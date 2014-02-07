@@ -61,6 +61,22 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# path
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+# my script tools
+source $HOME/scripts/get_platform.sh
+
+# autoenv
+. $HOME/scripts/autoenv/activate.sh
+
+# mac bash completion
+if [ $OS == "mac" ]; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
+fi
+
 # User specific aliases and functions
 alias ls='ls --color'
 alias ll='ls -al --color'
@@ -69,17 +85,17 @@ alias less='less -R'
 alias vi='vim'
 alias sc='screen'
 alias sv='screen vim'
-alias cdc='cd ~/_code/'
-alias cdgit='cd ~/github'
+alias cdc='cd $HOME/_code/'
+alias cdgit='cd $HOME/github'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
 
-# alias ack-grep un ubuntu
-source ~/scripts/get_platform.sh
 if [ "$OS" == "debian" ]; then
     alias ack='ack-grep'
+elif [ $OS == "mac" ]; then
+    alias ls='ls -vG'
+    alias ll='ls -vGal'
+    alias cdsim='cd ~/Library/Application\ Support/iPhone\ Simulator/'
 fi
 
-# enable local rc
-source ~/.bashrc.local &> /dev/null

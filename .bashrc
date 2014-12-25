@@ -98,6 +98,8 @@ alias cdgit='cd $HOME/github'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
+alias g='git'
+alias p='pyenv'
 
 if [ "$OS" == "debian" ]; then
     alias ack='ack-grep'

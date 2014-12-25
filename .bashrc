@@ -69,7 +69,7 @@ source $HOME/scripts/get_platform.sh
 
 # pyenv
 if [ -e $HOME/.pyenv ]; then
-    export PYENV_ROOT="$HOME/.pyenvdd"
+    export PYENV_ROOT="$HOME/.pyenv"
 elif [ -e /usr/local/opt/pyenv ]; then
     export PYENV_ROOT="/usr/local/opt/pyenv"
 fi

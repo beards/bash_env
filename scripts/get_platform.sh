@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 lowercase() {
     echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
 }
 
 OS=`lowercase \`uname\``
-if [ "$OS" == "windowsnt" ]; then
+if [ "$OS" = "windowsnt" ]; then
     OS=windows
-elif [ "$OS" == "darwin" ]; then
+elif [ "$OS" = "darwin" ]; then
     OS=mac
 elif [ -f /etc/redhat-release ]; then
     OS=redhat
